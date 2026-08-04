@@ -25,7 +25,8 @@
   <meta name="twitter:image" content="https://norouzimaziar.github.io/maziar-norouzi-profile.png" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
+    /* ===== فونت لوکس ===== */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
 
     * {
       margin: 0;
@@ -35,119 +36,194 @@
 
     body {
       font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f5f0fa 0%, #e8e0f0 100%);
-      color: #1a1a2e;
-      padding: 30px 20px;
+      background: #0a0a0f;
+      background-image: 
+        radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%);
+      color: #e8e4f0;
+      padding: 40px 20px;
       min-height: 100vh;
     }
 
+    /* ===== کانتینر اصلی با شیشه‌ای (Glassmorphism) ===== */
     .container {
-      max-width: 960px;
+      max-width: 1000px;
       margin: 0 auto;
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 45px 50px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+      background: rgba(20, 18, 30, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 40px;
+      padding: 55px 60px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ===== هدر ===== */
+    /* ===== افکت نور پس‌زمینه ===== */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== هدر طلایی ===== */
     .header {
       text-align: center;
-      border-bottom: 2px solid #f0ebf5;
-      padding-bottom: 30px;
-      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+      padding-bottom: 35px;
+      margin-bottom: 35px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header::after {
+      content: '✦';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #d4a837;
+      font-size: 1.2rem;
+      background: #0a0a0f;
+      padding: 0 15px;
     }
 
     .profile-img {
-      width: 160px;
-      height: 160px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #7c3aed;
-      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.25);
-      margin-bottom: 18px;
+      border: 3px solid rgba(212, 168, 55, 0.4);
+      box-shadow: 
+        0 0 40px rgba(212, 168, 55, 0.15),
+        inset 0 0 40px rgba(212, 168, 55, 0.05);
+      margin-bottom: 20px;
+      transition: all 0.5s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 60px rgba(212, 168, 55, 0.25);
     }
 
     .header h1 {
-      font-size: 2.4rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
       font-weight: 800;
-      color: #1a1a2e;
-      letter-spacing: -0.5px;
+      color: #f0ece6;
+      letter-spacing: 1px;
     }
 
     .header h1 span {
-      color: #7c3aed;
+      background: linear-gradient(135deg, #d4a837 0%, #f5d76e 50%, #d4a837 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
     }
 
     .header .subtitle {
-      font-size: 1.15rem;
-      color: #4a4a5e;
-      max-width: 700px;
-      margin: 10px auto 0;
-      line-height: 1.9;
+      font-size: 1.1rem;
+      color: rgba(232, 228, 240, 0.7);
+      max-width: 650px;
+      margin: 12px auto 0;
+      line-height: 2;
+      font-weight: 300;
+      letter-spacing: 0.3px;
     }
 
     .badge-top {
       display: inline-block;
-      background: #7c3aed;
-      color: #fff;
-      font-size: 0.75rem;
+      background: linear-gradient(135deg, #d4a837 0%, #b8941f 100%);
+      color: #0a0a0f;
+      font-size: 0.7rem;
       font-weight: 700;
-      padding: 4px 16px;
+      padding: 5px 20px;
       border-radius: 30px;
-      letter-spacing: 0.5px;
-      margin-top: 8px;
+      letter-spacing: 0.8px;
+      margin-top: 12px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(212, 168, 55, 0.2);
     }
 
-    /* ===== تیترها ===== */
+    /* ===== تیترها با لهجه طلایی ===== */
     h2 {
+      font-family: 'Playfair Display', serif;
       font-size: 1.7rem;
       font-weight: 700;
-      color: #1a1a2e;
-      margin-top: 35px;
-      margin-bottom: 12px;
-      padding-right: 16px;
-      border-right: 5px solid #7c3aed;
+      color: #f0ece6;
+      margin-top: 40px;
+      margin-bottom: 14px;
+      padding-right: 20px;
+      border-right: 4px solid #d4a837;
       line-height: 1.4;
+      position: relative;
+      z-index: 1;
     }
 
     h2:first-of-type {
       margin-top: 0;
     }
 
+    h2 .gold {
+      color: #d4a837;
+    }
+
     /* ===== پاراگراف ===== */
     p {
       font-size: 1.05rem;
-      line-height: 2;
-      color: #2d2d44;
-      margin-bottom: 14px;
+      line-height: 2.1;
+      color: rgba(232, 228, 240, 0.85);
+      margin-bottom: 16px;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
     }
 
     p strong {
-      color: #7c3aed;
+      color: #f0ece6;
+      font-weight: 600;
     }
 
-    /* ===== لیست‌ها - فاصله‌های استاندارد ===== */
+    p .gold-text {
+      color: #d4a837;
+      font-weight: 600;
+    }
+
+    /* ===== لیست‌ها با استایل پرستیژ ===== */
     ul {
       list-style: none;
       padding: 0;
-      margin: 8px 0 16px;
+      margin: 10px 0 20px;
+      position: relative;
+      z-index: 1;
     }
 
     ul li {
-      padding: 8px 16px;
+      padding: 10px 18px;
       font-size: 1.02rem;
-      line-height: 1.8;
-      border-bottom: 1px solid #f0ebf5;
-      color: #2d2d44;
+      line-height: 1.9;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: rgba(232, 228, 240, 0.8);
       display: flex;
       align-items: center;
-      gap: 12px;
-      border-radius: 8px;
+      gap: 14px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
     }
 
     ul li:hover {
-      background: #f8f5fc;
+      background: rgba(212, 168, 55, 0.05);
+      border-color: rgba(212, 168, 55, 0.1);
     }
 
     ul li:last-child {
@@ -156,62 +232,90 @@
 
     ul li .icon {
       font-size: 1.2rem;
-      width: 28px;
+      width: 30px;
       text-align: center;
       flex-shrink: 0;
+      opacity: 0.8;
     }
 
-    /* ===== بخش خدمات ===== */
+    ul li .gold-icon {
+      color: #d4a837;
+    }
+
+    /* ===== بخش خدمات با هاله طلایی ===== */
     .services-box {
-      background: linear-gradient(135deg, #f8f5fc 0%, #f0ebf5 100%);
-      border-radius: 20px;
-      padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(212, 168, 55, 0.04) 0%, rgba(212, 168, 55, 0.01) 100%);
+      border-radius: 24px;
+      padding: 30px 35px;
       margin: 30px 0 20px;
-      border: 1px solid #e8e0f0;
+      border: 1px solid rgba(212, 168, 55, 0.10);
+      position: relative;
+      z-index: 1;
+    }
+
+    .services-box::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 168, 55, 0.3), transparent);
     }
 
     .services-box h2 {
-      border-right-color: #7c3aed;
       margin-top: 0;
+      border-right-color: #d4a837;
     }
 
     .services-box ul li::before {
-      content: "✅";
-      margin-left: 10px;
-      color: #7c3aed;
-      font-weight: 700;
+      content: "✦";
+      margin-left: 12px;
+      color: #d4a837;
+      font-weight: 400;
+      font-size: 0.9rem;
     }
 
     .badge-new {
-      background: #7c3aed;
-      color: #fff;
-      font-size: 0.7rem;
+      background: linear-gradient(135deg, #d4a837 0%, #b8941f 100%);
+      color: #0a0a0f;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 2px 12px;
+      padding: 2px 14px;
       border-radius: 30px;
-      margin-right: 8px;
+      margin-right: 10px;
       display: inline-block;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
-    /* ===== گواهینامه‌ها ===== */
+    /* ===== گواهینامه‌ها با گرید طلایی ===== */
     .cert-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 10px 0 16px;
+      gap: 12px;
+      margin: 12px 0 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .cert-item {
-      background: #f8f5fc;
-      padding: 12px 18px;
-      border-radius: 12px;
-      border-right: 4px solid #7c3aed;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px 20px;
+      border-radius: 16px;
+      border-right: 3px solid rgba(212, 168, 55, 0.25);
       font-size: 0.98rem;
-      line-height: 1.7;
-      color: #2d2d44;
+      line-height: 1.8;
+      color: rgba(232, 228, 240, 0.8);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .cert-item:hover {
+      background: rgba(212, 168, 55, 0.04);
+      border-right-color: #d4a837;
     }
 
     .cert-item .icon {
@@ -221,83 +325,107 @@
 
     .cert-item.highlight {
       grid-column: 1 / -1;
-      border-right-color: #f59e0b;
-      background: #fef9e7;
+      border-right-color: #d4a837;
+      background: linear-gradient(135deg, rgba(212, 168, 55, 0.06) 0%, rgba(212, 168, 55, 0.02) 100%);
+    }
+
+    .cert-item.highlight .icon {
+      color: #d4a837;
     }
 
     /* ===== شبکه‌های اجتماعی ===== */
     .social-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin: 12px 0 8px;
+      gap: 14px;
+      margin: 14px 0 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .social-links a {
-      background: #f8f5fc;
-      padding: 10px 22px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 24px;
       border-radius: 40px;
       text-decoration: none;
-      color: #1a1a2e;
-      font-weight: 600;
+      color: rgba(232, 228, 240, 0.75);
+      font-weight: 500;
       font-size: 0.95rem;
       line-height: 1.4;
-      border: 1px solid #e8e0f0;
-      transition: all 0.25s;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      backdrop-filter: blur(10px);
     }
 
     .social-links a:hover {
-      background: #7c3aed;
-      color: #fff;
-      border-color: #7c3aed;
+      background: linear-gradient(135deg, #d4a837 0%, #b8941f 100%);
+      color: #0a0a0f;
+      border-color: #d4a837;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+      box-shadow: 0 8px 30px rgba(212, 168, 55, 0.2);
     }
 
-    /* ===== تماس ===== */
+    /* ===== تماس طلایی ===== */
     .contact-box {
-      margin-top: 40px;
-      padding: 28px 32px;
-      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
-      border-radius: 20px;
+      margin-top: 45px;
+      padding: 32px 40px;
+      background: linear-gradient(135deg, rgba(212, 168, 55, 0.08) 0%, rgba(212, 168, 55, 0.02) 100%);
+      border-radius: 24px;
       text-align: center;
-      color: #fff;
+      border: 1px solid rgba(212, 168, 55, 0.10);
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 168, 55, 0.3), transparent);
     }
 
     .contact-box strong {
-      font-size: 1.3rem;
-      font-weight: 800;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f0ece6;
+      letter-spacing: 1px;
     }
 
     .contact-box .phone {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
       display: block;
-      margin: 6px 0 2px;
+      margin: 8px 0 4px;
       direction: ltr;
+      background: linear-gradient(135deg, #d4a837 0%, #f5d76e 50%, #d4a837 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(212, 168, 55, 0.1);
     }
 
     .contact-box .sub {
       font-size: 0.95rem;
-      opacity: 0.9;
-    }
-
-    .contact-box a {
-      color: #fff;
-      text-decoration: none;
+      opacity: 0.5;
+      font-weight: 300;
+      letter-spacing: 0.5px;
     }
 
     /* ===== واکنش‌گرا ===== */
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
       .container {
-        padding: 25px 20px;
+        padding: 30px 25px;
+        border-radius: 28px;
       }
       .header h1 {
-        font-size: 1.8rem;
+        font-size: 2.1rem;
       }
       h2 {
         font-size: 1.4rem;
@@ -307,37 +435,52 @@
       }
       .social-links {
         flex-direction: column;
+        align-items: stretch;
       }
       .social-links a {
         justify-content: center;
       }
       .contact-box .phone {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: 480px) {
       body {
         padding: 15px 10px;
       }
       .container {
-        padding: 18px 14px;
+        padding: 20px 16px;
+        border-radius: 20px;
       }
       .profile-img {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
       }
       .header h1 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+        padding-right: 14px;
       }
       ul li {
-        padding: 6px 10px;
+        padding: 7px 12px;
         font-size: 0.95rem;
-        gap: 8px;
+        gap: 10px;
       }
       .cert-item {
         padding: 10px 14px;
-        font-size: 0.92rem;
+        font-size: 0.9rem;
+      }
+      .services-box {
+        padding: 20px 18px;
+      }
+      .contact-box {
+        padding: 22px 20px;
+      }
+      .contact-box .phone {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -346,20 +489,20 @@
 
 <div class="container">
 
-  <!-- ===== هدر ===== -->
+  <!-- ===== هدر لوکس ===== -->
   <div class="header">
     <img class="profile-img" src="maziar-norouzi-profile.png" alt="مازیار نوروزی - مشاور تحصیلی و کنکور" />
     <h1>مازیار <span>نوروزی</span></h1>
     <div class="subtitle">
       مشاور تحصیلی و برنامه‌ریزی کنکور با بیش از یک دهه تجربه
       <br>
-      <span class="badge-top">✨ مشاوره با هوش مصنوعی برای نسل آلفا</span>
+      <span class="badge-top">✦ مشاوره با هوش مصنوعی برای نسل آلفا ✦</span>
     </div>
   </div>
 
   <!-- ===== مشاوره تخصصی ===== -->
   <section>
-    <h2>مشاوره تخصصی کنکور</h2>
+    <h2>مشاوره تخصصی <span class="gold">کنکور</span></h2>
     <p>
       <strong>سلام! من مازیار نوروزی هستم؛</strong> مشاور و برنامه‌ریز تحصیلی با بیش از <strong>یک دهه تجربه</strong> در حوزه مشاوره کنکور و همراهی صدها دانش‌آموز در مسیر موفقیت. تخصص من کمک به شماست تا با برنامه‌ریزی شخصی‌سازی‌شده، شناخت استعدادها و پشتیبانی مداوم، بهترین نتیجه رو در <strong>کنکور سراسری</strong> بگیرید.
     </p>
@@ -371,13 +514,13 @@
     </p>
     <p>
       اگر به دنبال <strong>رتبه برتر شدن در کنکور</strong> هستی، همین حالا با ما تماس بگیر:  
-      <strong style="font-size:1.3rem;color:#7c3aed;">09912808601</strong> (ویژه مشاوره رایگان)
+      <span class="gold-text" style="font-size:1.4rem;font-weight:700;">09912808601</span> (ویژه مشاوره رایگان)
     </p>
   </section>
 
   <!-- ===== خدمات اصلی ===== -->
   <div class="services-box">
-    <h2>خدمات اصلی مشاوره و برنامه‌ریزی</h2>
+    <h2>خدمات اصلی <span class="gold">مشاوره و برنامه‌ریزی</span></h2>
     <ul>
       <li>برنامه‌ریزی شخصی‌سازی‌شده (روزانه، هفتگی و ماهانه)</li>
       <li>پیگیری مستمر و ارتقای برنامه درسی داوطلب</li>
@@ -396,21 +539,21 @@
 
   <!-- ===== تحصیلات و سوابق ===== -->
   <section>
-    <h2>۱. تحصیلات</h2>
+    <h2>۱. <span class="gold">تحصیلات</span></h2>
     <p>🎓 دانش‌آموخته مدیریت بازرگانی</p>
 
-    <h2>۲. سوابق شغلی</h2>
+    <h2>۲. <span class="gold">سوابق شغلی</span></h2>
     <ul>
-      <li><span class="icon">🏫</span> <strong>مشاور تحصیلی</strong> در موسسه کنکور آسان است و انتشارات گیلنا - همراهی بیش از ۱۰۰۰ دانش‌آموز</li>
-      <li><span class="icon">📚</span> <strong>مشاور تحصیلی</strong> در موسسه گام کلاس - طراحی برنامه‌ریزی شخصی‌سازی‌شده</li>
-      <li><span class="icon">🚀</span> <strong>موسس آکادمی انفجار کنکوری‌ها</strong> - مشاوره جامع، کارگاه‌های انگیزشی و استعدادیابی</li>
-      <li><span class="icon">📖</span> <strong>مشاور تحصیلی در انتشارات خیلی سبز</strong></li>
+      <li><span class="icon gold-icon">🏛</span> <strong>مشاور تحصیلی</strong> در موسسه کنکور آسان است و انتشارات گیلنا - همراهی بیش از ۱۰۰۰ دانش‌آموز</li>
+      <li><span class="icon gold-icon">📚</span> <strong>مشاور تحصیلی</strong> در موسسه گام کلاس - طراحی برنامه‌ریزی شخصی‌سازی‌شده</li>
+      <li><span class="icon gold-icon">⚡</span> <strong>موسس آکادمی انفجار کنکوری‌ها</strong> - مشاوره جامع، کارگاه‌های انگیزشی و استعدادیابی</li>
+      <li><span class="icon gold-icon">📖</span> <strong>مشاور تحصیلی در انتشارات خیلی سبز</strong></li>
     </ul>
 
-    <h2>۳. گواهینامه‌ها و مدارک تخصصی</h2>
+    <h2>۳. <span class="gold">گواهینامه‌ها و مدارک تخصصی</span></h2>
     <div class="cert-grid">
-      <div class="cert-item"><span class="icon">🏅</span> گواهینامه تخصصی مشاوره، برنامه‌ریزی و انتخاب رشته – وزارت علوم</div>
-      <div class="cert-item"><span class="icon">🧠</span> گواهینامه استعدادیابی – مرکز پژوهش‌های توسعه آینده‌نگری</div>
+      <div class="cert-item"><span class="icon">🏅</span> گواهینامه تخصصی مشاوره، برنامه‌ریزی و انتخاب رشته – وزارت علوم و تحقیقات کشور </div>
+      <div class="cert-item"><span class="icon">🧠</span> گواهینامه استعدادیابی – مرکز پژوهش‌های توسعه و آینده‌نگری</div>
       <div class="cert-item"><span class="icon">🧭</span> گواهینامه تحلیل شخصیت MBTI</div>
       <div class="cert-item"><span class="icon">🌍</span> گواهینامه کوچینگ حرفه‌ای ICF – آمریکا</div>
       <div class="cert-item highlight">
@@ -418,12 +561,12 @@
       </div>
     </div>
 
-    <h2>۴. ثبت نام مشاوره و برنامه‌ریزی</h2>
+    <h2>۴. <span class="gold">ثبت نام مشاوره و برنامه‌ریزی</span></h2>
     <p>
-      برای رزرو مشاوره با استاد <strong>مازیار نوروزی</strong> کافیه با شماره <strong>09912808601</strong> تماس بگیرید (پایه نهم تا کنکور)
+      برای رزرو مشاوره با استاد <strong>مازیار نوروزی</strong> کافیه با شماره <span class="gold-text">09912808601</span> تماس بگیرید (پایه نهم تا کنکور)
     </p>
 
-    <h2>۵. شبکه‌های اجتماعی</h2>
+    <h2>۵. <span class="gold">شبکه‌های اجتماعی</span></h2>
     <div class="social-links">
       <a href="https://www.instagram.com/moshaverh.norouzi" target="_blank">📸 اینستاگرام رسمی</a>
       <a href="https://www.instagram.com/enfejarkonkoriha" target="_blank">📸 اینستاگرام آکادمی</a>
@@ -433,10 +576,10 @@
     </div>
   </section>
 
-  <!-- ===== فوتر تماس ===== -->
+  <!-- ===== فوتر تماس طلایی ===== -->
   <div class="contact-box">
     <strong>تماس با ما</strong>
-    <span class="phone">📞 09912808601</span>
+    <span class="phone">09912808601</span>
     <span class="sub">مازیار نوروزی | مشاور رسمی کنکور و انتخاب رشته</span>
   </div>
 
